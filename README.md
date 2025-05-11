@@ -111,48 +111,6 @@ A serverless application for scheduling tasks to run at specific times in the fu
 
 6. Note the API Gateway URL from the output.
 
-## Local Testing
-
-### Unit Tests
-
-Run the unit tests:
-```
-python -m pytest tests/
-```
-
-### Local API Testing
-
-You can test the API locally using the AWS SAM CLI:
-
-1. Install AWS SAM CLI:
-   ```
-   pip install aws-sam-cli
-   ```
-
-2. Generate SAM template:
-   ```
-   cdk synth --no-staging > template.yaml
-   ```
-
-3. Start local API:
-   ```
-   sam local start-api
-   ```
-
-4. Test with curl:
-   ```
-   curl -X POST http://localhost:3000/tasks \
-     -H "Content-Type: application/json" \
-     -d '{
-       "action": "webhook",
-       "payload": {
-         "url": "https://example.com/notify",
-         "data": { "message": "Hello, this is your scheduled task!" }
-       },
-       "run_at": "2024-06-10T15:00:00Z"
-     }'
-   ```
-
 ## API Reference
 
 ### Schedule a Task
